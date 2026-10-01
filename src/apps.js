@@ -25,9 +25,9 @@ export const apps = [
     color: '#7a4fb4',
   },
   {
-    name: 'Endgame Flashcards',
+    name: 'Endgame Drill',
     tagline: 'Practice your endgames',
-    description: 'Drill the key endgame positions until they are automatic.',
+    description: 'Drill the key endgame positions from your own games',
     url: 'https://endgame-drill.vercel.app/',
     piece: '♚',
     color: '#2f8f6a',
