@@ -1,0 +1,43 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #15171a; --panel: #1d2024; --line: #2c3036; --text: #ece8de; --muted: #9a9a92;
+}
+html { color-scheme: dark; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.55;
+  min-height: 100vh; display: flex; flex-direction: column;
+  /* subtle chessboard texture */
+  background-image:
+    linear-gradient(45deg, #191c20 25%, transparent 25%, transparent 75%, #191c20 75%),
+    linear-gradient(45deg, #191c20 25%, transparent 25%, transparent 75%, #191c20 75%);
+  background-size: 64px 64px; background-position: 0 0, 32px 32px;
+}
+.top { max-width: 1100px; width: 100%; margin: 0 auto; padding: 4rem 1.5rem 2rem; }
+.top h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: -0.02em; line-height: 1.05; }
+.top p { margin-top: 0.9rem; max-width: 52ch; color: var(--muted); font-size: 1.05rem; }
+main { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 1.5rem 3rem; flex: 1; }
+.count { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.1rem; }
+.card {
+  position: relative; display: flex; flex-direction: column; gap: 0.35rem;
+  padding: 1.5rem 1.5rem 1.25rem; min-height: 230px; overflow: hidden;
+  background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--accent);
+  border-radius: 6px; color: inherit; text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.card:hover, .card:focus-visible { transform: translateY(-3px); border-color: var(--accent); outline: none; }
+.card:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 55%, transparent); }
+.piece {
+  position: absolute; right: 0.6rem; top: -0.4rem; font-size: 6.5rem; line-height: 1;
+  color: var(--accent); opacity: 0.18; pointer-events: none; transition: opacity 0.18s;
+}
+.card:hover .piece { opacity: 0.32; }
+.card h2 { font-family: 'Fraunces', Georgia, serif; font-size: 1.55rem; font-weight: 700; line-height: 1.15; padding-right: 3.5rem; }
+.tag { color: var(--accent); font-weight: 500; font-size: 0.92rem; filter: brightness(1.35); }
+.desc { color: var(--muted); font-size: 0.93rem; margin-top: 0.4rem; }
+.open { margin-top: auto; padding-top: 1rem; display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); }
+.arrow { color: var(--accent); filter: brightness(1.35); font-size: 1rem; transition: transform 0.18s; }
+.card:hover .arrow { transform: translate(2px, -2px); }
+footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) { .card, .piece, .arrow { transition: none; } .card:hover { transform: none; } }
